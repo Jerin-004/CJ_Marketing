@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    CJ's Market | Register Page
+{% endblock %}
+
+{% block content %}
+    <body class="text-center">
+        <div class="container">
+            
+            <form method="post" class="form-register" style="color: white;">
+                {{ form.hidden_tag() }}
+                <div class="text-center"><img class="mb-4" src="{{ comp_logo }}" style="width:270px;" alt="CJ"></div>
+                <h1 class="h3 mb-3 font-weight-normal text-center">
+                    Create your Account or else i will kill you
+                </h1>
+
+                <div class="form-group">
+                    {{ form.username.label() }}
+                    {{ form.username(class="form-control" ,id="pwd",placeholder="User Name" ,style="color:black;") }}
+                </div>
+  
+                <div class="form-group">
+                    {{ form.email_address.label() }}
+                    {{ form.email_address(class="form-control" ,id="pwd",placeholder="Email Address",style="color:black;") }}
+                </div>
+      
+                <div class="form-group ">
+                    {{ form.password1.label() }}
+                    {{ form.password1(class="form-control",placeholder="Password" ,id="pwd",style="color:black;") }}
+                </div> 
+     
+                <div class="form-group">
+                    {{ form.password2.label() }}
+                    {{ form.password2(class="form-control",placeholder="Confirm Password" ,id="pwd",style="color:black;") }}
+                </div>
+                <br>
+                {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+                <br>
+                <div class="checkbox mb-3">
+                <h6>Already Have an account?</h6>
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Login</a>
+                </div>
+            </form>
+        </div>
+    </body>
+    
+    
+{% endblock %}
