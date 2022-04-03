@@ -7,13 +7,14 @@ from market import db
 from flask_login import login_user,logout_user, login_required, current_user
 import os
 
-
+pic1 = os.path.join(app.config['UPLOAD_FOLDER'], 'CJ_Logo_2.png')
+titlepic = os.path.join(app.config['UPLOAD_FOLDER'], 'shopping-cart.png')
 
 @app.route("/") # are called as decorator
 @app.route("/home")
 def home_page():
     pic1 = os.path.join(app.config['UPLOAD_FOLDER'], 'CJ_Logo_2.png')
-    return render_template("home.html",comp_logo=pic1)
+    return render_template("home.html",comp_logo=pic1, title_logo=titlepic)
 
 @app.route("/market",methods=['GET','POST'])
 @login_required
@@ -48,7 +49,7 @@ def market_page():
     if request.method == "GET":    
         owned_items = Item.query.filter_by(owner=current_user.id)
         items = Item.query.filter_by(owner=None)
-        return render_template("market.html",items=items,purchase_form=purchase_form, owned_items = owned_items, selling_form=selling_form) 
+        return render_template("market.html",items=items, title_logo=titlepic,purchase_form=purchase_form, owned_items = owned_items, selling_form=selling_form,comp_logo=pic1) 
 
 @app.route("/register" ,methods=['GET','POST'])
 def register_page():
@@ -72,7 +73,7 @@ def register_page():
         for err_msg in form.errors.values():
             flash(f"There was an unexpected foolish error{err_msg}", category='danger')
 
-    return render_template("register.html", form=form, comp_logo=pic1)
+    return render_template("register.html", form=form, comp_logo=pic1, title_logo=titlepic)
 
 
 @app.route("/login",methods=['GET','POST'])
@@ -91,7 +92,7 @@ def login_page():
         else:
             flash("Username and password are not match! Please try again", category="danger")
 
-    return render_template("login.html", form=form, comp_logo=pic1)
+    return render_template("login.html", form=form, comp_logo=pic1, title_logo=titlepic)
 
 
 @app.route('/logout')
