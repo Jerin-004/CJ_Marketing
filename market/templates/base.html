@@ -67,6 +67,7 @@
               <li>
                   <a class="nav-link scrollto" title="Logout" href="{{ url_for('home_page') }}"><i style="font-size: 25px;" class="bi bi-box-arrow-left"></i></a>
               </li>
+            <a class="book-a-table-btn scrollto d-none d-lg-flex" data-toggle="modal" data-target="#Modal-WelcomeMessage-{{ current_user.username }} ">Welcome, {{current_user.username}}</a>
           {% else %}
               <li>
                   <a class="nav-link scrollto" title="Login" href="{{ url_for('login_page') }}"><i style="font-size: 25px;" class="bi bi-box-arrow-right"></i></a>
@@ -78,10 +79,7 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      {% if current_user.is_authenticated %}
-      {% include "include/welcome_user_modal.html" %}
-      <a class="book-a-table-btn scrollto d-none d-lg-flex" data-toggle="modal" data-target="#Modal-WelcomeMessage-{{ current_user.username }} ">Welcome, {{current_user.username}}</a>
-      {% endif %}
+      {
     </div>
     
   </header><!-- End Header -->
