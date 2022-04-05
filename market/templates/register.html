@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    CJ's Market | Register Page
+    <title>CJ's Market | Register</title>
 {% endblock %}
 
 {% block content %}
+    <br>
+    <br>
+    <br>
     <body class="text-center">
         <div class="container">
             
             <form method="post" class="form-register" style="color: white;">
                 {{ form.hidden_tag() }}
-                <div class="text-center"><img class="mb-4" src="{{ comp_logo }}" style="width:270px;" alt="CJ"></div>
+                <div class="text-center"><img class="mb-4" src="static/img/CJ_Logo_2.png" style="width:270px;" alt="CJ"></div>
                 <h1 class="h3 mb-3 font-weight-normal text-center">
                     Create your Account or else i will kill you
                 </h1>
@@ -38,6 +41,7 @@
                 {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
                 <br>
                 <div class="checkbox mb-3">
+                <hr>
                 <h6>Already Have an account?</h6>
                 <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Login</a>
                 </div>

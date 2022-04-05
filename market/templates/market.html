@@ -1,57 +1,73 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
-{% block title %} 
-    CJ's Market | Market Page 
-{%endblock %} 
-
+{% block title %}
+    <title>CJ's Market | Market</title>
+{% endblock %}
 
 {% block content %}
-
-<div class="main-container" style="margin-top: 20px; margin-left: 20px">
-  <div class="table-container">
-    <h2>Available Items on the market for today</h2>
-    <p>Click on one of the items to start buying</p>
     <br>
-    <table class="table table-hover table-dark" style="border: 2px solid rgb(0, 255, 136);border-radius: 25px;">
-      <thead>
-        <tr>
-          <!-- Your Columns HERE -->
-          <th scope="col">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Barcode</th>
-          <th scope="col">Price</th>
-          <th scope="col">Options</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Your rows inside the table HERE: -->
+    <br>
+    <!-- ======= Market Section ======= -->
+    <section id="menu" class="menu section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Available Items on the market for today</h2>
+          <p>Click on one of the items to start buying</p>
+        </div>
+
+
+
+        <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+
         {% for item in items %}
         {% include "include/items_modals.html" %}
-        <tr>
-          <td>{{item.id}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.barcode}}</td>
-          <td>${{item.price}}</td>
-          <td>
-            <button class="btn btn-outline btn-info model-btn" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}" >More info</button>
-            <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">
-              Purchase this item
-            </button>
-          </td>
-        </tr>
+            <div class="col-lg-4 menu-item filter-starters">
+              {% if item.id == 1 %}
+              <img src="static/img/IdeaPad_gaming.jpg" class="menu-img" alt="">
+              {% elif item.id == 2 %}
+              <img src="static/img/Iphone_10.jpg" class="menu-img" alt="">
+              {% elif item.id == 3 %}
+              <img src="static/img/Dell_inspirion.jpg" class="menu-img" alt="">
+              {% elif item.id == 4 %}
+              <img src="static/img/Oppo_A15S.jfif" class="menu-img" alt="">
+              {% endif %}
+              <div class="menu-content">
+                <a class="btn btn-outline btn-info model-btn" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}" style="border: none;">{{item.name}}</a><span><button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}" style="background-color: rgb(26, 24, 20);color: #5e81cd;border: none;">${{item.price}}</button></span>
+              </div>
+            </div>
         {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  <div class="owned-items">
-      <h2>Owned Items</h2>
-      <p>Click on sell item to sell the item back to market</p>
-      <br>
-      <div class="row">
-          {% for owned_item in owned_items %}
+      </div>
+    </section><!-- End Market Section -->
+
+    
+    <!-- Owner -->
+    <section id="menu"  class="menu section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Owned Items</h2>
+          <p>Click on sell item to sell the item back to market</p>
+        </div>
+
+        
+
+        <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+
+        {% for owned_item in owned_items %}
            {% include "include/owned_items_modals.html" %}
              <div class="col-md-6">
-                 <div style="margin-bottom: 5px;border: 2px solid red;border-radius: 25px;" class="card text-center bg-dark">
+                 <div style="margin-bottom: 10px;background-color: rgb(26, 24, 20);border-color: #5e81cd;" class="card text-center">
+                 <br>
+                 {% if owned_item.id == 1 %}
+                  <img src="static/img/IdeaPad_gaming.jpg" style="align-items:center;"  alt="">
+                 {% elif owned_item.id == 2 %}
+                  <img src="static/img/Iphone_10.jpg" style="align-items:center;"  alt="">
+                 {% elif owned_item.id == 3 %}
+                  <img src="static/img/Dell_inspirion.jpg" style="align-items:center;"  alt="">
+                 {% elif owned_item.id == 4 %}
+                  <img src="static/img/Oppo_A15S.jfif" style="align-items:center;"  alt="">
+                 {% endif %}
                       <div class="card-body ">
                           <h5 class="card-title">{{ owned_item.name }}</h5>
                           <button type="button" class="btn btn-outline-danger" style="margin-bottom: 5px"
@@ -63,10 +79,12 @@
                           </strong></p>
                       </div>
                   </div>
+                  <br>
+                  <br>
              </div>
-           {% endfor %}
+             <br>
+          {% endfor %}
       </div>
-  </div>
-</div>
+    </section>
 
 {% endblock %}

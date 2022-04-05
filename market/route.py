@@ -71,7 +71,7 @@ def register_page():
 
     if form.errors != {}: # If there is errors from the validations
         for err_msg in form.errors.values():
-            flash(f"There was an unexpected foolish error{err_msg}", category='danger')
+            flash(f"There was an unexpected error{err_msg}", category='danger')
 
     return render_template("register.html", form=form, comp_logo=pic1, title_logo=titlepic)
 
