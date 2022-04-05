@@ -56,7 +56,7 @@ class Item(db.Model):
 
     def sell(self,user):
         self.owner = None
-        user.budget += self.price
+        user.budget += int(self.price)
         db.session.commit()
 
     def __repr__(self):

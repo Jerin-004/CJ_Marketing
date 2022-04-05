@@ -35,9 +35,11 @@ def market_page():
         
         #sold item login
         sold_item = request.form.get('sold_item')
+        changed_price = request.form.get('changed_price')
         s_item_object = Item.query.filter_by(name=sold_item).first()
         if s_item_object:
             if current_user.can_sell(s_item_object):
+                s_item_object.price = changed_price
                 s_item_object.sell(current_user)
                 flash(f"Congratulations! You Sold {s_item_object.name} back to market!", category='success')
 

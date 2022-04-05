@@ -1,7 +1,8 @@
+from ast import Num
 from wsgiref.validate import validator
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField
-from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
+from wtforms import StringField,PasswordField,SubmitField,IntegerField
+from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError,NumberRange
 from market.model import User
 
 class RegisterForm(FlaskForm):
@@ -34,4 +35,5 @@ class PurchaseItemForm(FlaskForm):
     submit = SubmitField(label="Purchase item!")
 
 class SellItemForm(FlaskForm):
+    changed_price = IntegerField(label="Changed price: ", validators=[NumberRange(min=2,max=9999), DataRequired()])
     submit = SubmitField(label="Sell item!")

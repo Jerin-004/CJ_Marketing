@@ -471,7 +471,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero .play-btn {
   width: 94px;
   height: 94px;
-  background: radial-gradient(#5e81cd 50%, rgba(205, 164, 94, 0.4) 52%);
+  background: radial-gradient(#5e81cd 50%, rgba(182, 223, 250, 0.4) 52%);
   border-radius: 50%;
   display: block;
   position: relative;

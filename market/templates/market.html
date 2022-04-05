@@ -31,6 +31,10 @@
               <img src="static/img/Dell_inspirion.jpg" class="menu-img" alt="">
               {% elif item.id == 4 %}
               <img src="static/img/Oppo_A15S.jfif" class="menu-img" alt="">
+              {% elif item.id == 5 %}
+              <img src="static/img/PS5.jpg" class="menu-img" alt="">
+              {% elif item.id == 6 %}
+              <img src="static/img/SamsungTV.png" class="menu-img" alt="">
               {% endif %}
               <div class="menu-content">
                 <a class="btn btn-outline btn-info model-btn" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}" style="border: none;">{{item.name}}</a><span><button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}" style="background-color: rgb(26, 24, 20);color: #5e81cd;border: none;">${{item.price}}</button></span>
@@ -57,7 +61,7 @@
         {% for owned_item in owned_items %}
            {% include "include/owned_items_modals.html" %}
              <div class="col-md-6">
-                 <div style="margin-bottom: 10px;background-color: rgb(26, 24, 20);border-color: #5e81cd;" class="card text-center">
+                 <div style="background-color: rgb(26, 24, 20);border-color: #5e81cd;" class="card text-center">
                  <br>
                  {% if owned_item.id == 1 %}
                   <img src="static/img/IdeaPad_gaming.jpg" style="align-items:center;"  alt="">
@@ -67,6 +71,10 @@
                   <img src="static/img/Dell_inspirion.jpg" style="align-items:center;"  alt="">
                  {% elif owned_item.id == 4 %}
                   <img src="static/img/Oppo_A15S.jfif" style="align-items:center;"  alt="">
+                  {% elif owned_item.id == 5 %}
+                  <img src="static/img/PS5.jpg" style="align-items:center;" alt="">
+                  {% elif owned_item.id == 6 %}
+                  <img src="static/img/SamsungTV.png" style="align-items:center;" alt="">
                  {% endif %}
                       <div class="card-body ">
                           <h5 class="card-title">{{ owned_item.name }}</h5>
@@ -79,10 +87,10 @@
                           </strong></p>
                       </div>
                   </div>
-                  <br>
-                  <br>
+                <br>
+                <br>
              </div>
-             <br>
+            <br>
           {% endfor %}
       </div>
     </section>
