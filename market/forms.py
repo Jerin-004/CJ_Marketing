@@ -32,8 +32,8 @@ class LoginForm(FlaskForm):
     submit = SubmitField(label="Sign in")
 
 class PurchaseItemForm(FlaskForm):
-    submit = SubmitField(label="Purchase item!")
+    submit = SubmitField(label="Purchase share!")
 
 class SellItemForm(FlaskForm):
-    changed_price = IntegerField(label="Changed price: ", validators=[NumberRange(min=2,max=9999), DataRequired()])
-    submit = SubmitField(label="Sell item!")
+    changed_price = IntegerField(label="Changed price: ", validators=[NumberRange(min=2,max=999999999999999), DataRequired()])
+    submit = SubmitField(label="Sell share!")

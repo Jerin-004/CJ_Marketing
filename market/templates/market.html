@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>CJ's Market | Market</title>
+    <title>CJ Capital | Market</title>
 {% endblock %}
 
 {% block content %}
@@ -12,8 +12,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Available Items on the market for today</h2>
-          <p>Click on one of the items to start buying</p>
+          <h2>Available Shares on the market for today</h2>
+          <p>Click on one of the Share to start buying</p>
         </div>
 
 
@@ -24,17 +24,17 @@
         {% include "include/items_modals.html" %}
             <div class="col-lg-4 menu-item filter-starters">
               {% if item.id == 1 %}
-              <img src="static/img/IdeaPad_gaming.jpg" class="menu-img" alt="">
+              <img src="static/img/Google.jpg" style="height: 60px;width: 140px;" class="menu-img" alt="">
               {% elif item.id == 2 %}
-              <img src="static/img/Iphone_10.jpg" class="menu-img" alt="">
+              <img src="static/img/Apple.jpg" class="menu-img" alt="">
               {% elif item.id == 3 %}
-              <img src="static/img/Dell_inspirion.jpg" class="menu-img" alt="">
+              <img src="static/img/Tata_motors.jpg" style="height: 60px;width: 110px;" class="menu-img" alt="">
               {% elif item.id == 4 %}
-              <img src="static/img/Oppo_A15S.jfif" class="menu-img" alt="">
+              <img src="static/img/infosys_logo.jpg"  class="menu-img" alt="">
               {% elif item.id == 5 %}
-              <img src="static/img/PS5.jpg" class="menu-img" alt="">
+              <img src="static/img/Meta-logo.jpg" style="height: 40px;width: 140px;" class="menu-img" alt="">
               {% elif item.id == 6 %}
-              <img src="static/img/SamsungTV.png" class="menu-img" alt="">
+              <img src="static/img/Twitter-Logo.jpg" style="height: 60px;width: 110px;" class="menu-img" alt="">
               {% endif %}
               <div class="menu-content">
                 <a class="btn btn-outline btn-info model-btn" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}" style="border: none;">{{item.name}}</a><span><button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}" style="background-color: rgb(26, 24, 20);color: #5e81cd;border: none;">${{item.price}}</button></span>
@@ -50,8 +50,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Owned Items</h2>
-          <p>Click on sell item to sell the item back to market</p>
+          <h2>Owned Shares</h2>
+          <p>Click on sell share to sell the share back to market</p>
         </div>
 
         
@@ -64,26 +64,26 @@
                  <div style="background-color: rgb(26, 24, 20);border-color: #5e81cd;" class="card text-center">
                  <br>
                  {% if owned_item.id == 1 %}
-                  <img src="static/img/IdeaPad_gaming.jpg" style="align-items:center;"  alt="">
+                  <img src="static/img/Google.jpg" style="align-items:center;"  alt="">
                  {% elif owned_item.id == 2 %}
-                  <img src="static/img/Iphone_10.jpg" style="align-items:center;"  alt="">
+                  <img src="static/img/Apple.jpg" style="align-items:center;"  alt="">
                  {% elif owned_item.id == 3 %}
-                  <img src="static/img/Dell_inspirion.jpg" style="align-items:center;"  alt="">
-                 {% elif owned_item.id == 4 %}
-                  <img src="static/img/Oppo_A15S.jfif" style="align-items:center;"  alt="">
+                  <img src="static/img/Tata_motors.jpg" style="align-items:center;"  alt="">
+                  {% elif owned_item.id == 4 %}
+                  <img src="static/img/infosys_logo.jpg" style="align-items:center;"  alt="">
                   {% elif owned_item.id == 5 %}
-                  <img src="static/img/PS5.jpg" style="align-items:center;" alt="">
+                  <img src="static/img/Meta-logo.jpg" style="align-items:center;"  alt="">
                   {% elif owned_item.id == 6 %}
-                  <img src="static/img/SamsungTV.png" style="align-items:center;" alt="">
+                  <img src="static/img/Twitter-Logo.jpg" style="align-items:center;"  alt="">
                  {% endif %}
                       <div class="card-body ">
                           <h5 class="card-title">{{ owned_item.name }}</h5>
                           <button type="button" class="btn btn-outline-danger" style="margin-bottom: 5px"
                                   data-toggle="modal" data-target="#Modal-SellingConfirm-{{ owned_item.id }}">
-                              Sell this Item
+                              Sell this Share
                           </button>
                           <p class="card-text"><strong>
-                              This item costs {{ owned_item.price }}$
+                              This share costs {{ owned_item.price }}$
                           </strong></p>
                       </div>
                   </div>

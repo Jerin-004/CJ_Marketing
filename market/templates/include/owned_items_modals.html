@@ -27,13 +27,13 @@
         <form method="POST">
           {{ selling_form.hidden_tag() }}
           <h4 class="text-center">
-            Enter the amount that you want to sell {{ owned_item.name }} for  
+            Enter the amount that you want to sell {{ owned_item.name }}'s share for  
           </h4>
-          {{selling_form.changed_price(style="margin-left:190px;border-color:5e81cd;")}} $
+          {{selling_form.changed_price(style="margin-left:150px;border-color:5e81cd;")}} $
           <br>
           <br>
           <h6 class="text-center">
-            By clicking Sell, you will put this item back on market
+            By clicking Sell, you will put this share back on market
           </h6>
           <br>
           <input id="sold_item" name="sold_item" type="hidden" value="{{owned_item.name}}">

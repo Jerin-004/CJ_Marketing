@@ -1,14 +1,34 @@
 from unicodedata import name
 from market import app
-from flask import render_template, redirect,url_for,flash,get_flashed_messages, request
+from flask import abort, render_template, redirect,url_for,flash,get_flashed_messages, request
 from market.model import Item,User
 from market.forms import LoginForm, RegisterForm, PurchaseItemForm, SellItemForm
 from market import db
 from flask_login import login_user,logout_user, login_required, current_user
 import os
+from market import admin
+from flask_admin.contrib.sqla import ModelView
+
 
 pic1 = os.path.join(app.config['UPLOAD_FOLDER'], 'CJ_Logo_2.png')
 titlepic = os.path.join(app.config['UPLOAD_FOLDER'], 'shopping-cart.png')
+
+class Controller(ModelView):
+    def is_accessible(self):
+        if current_user.username == "Jerin":
+            return current_user.is_authenticated
+        
+        else:
+            return flash("You are not authorized to use the admin dashboard",category="danger")
+            return redirect(url_for("market_page"))
+            
+
+    def not_auth(self):
+        flash("You are not authorized to use the admin dashboard",category="danger")
+        return redirect(url_for("market_page"))
+
+admin.add_view(Controller(User, db.session))
+admin.add_view(Controller(Item, db.session))
 
 @app.route("/") # are called as decorator
 @app.route("/home")
@@ -28,10 +48,10 @@ def market_page():
         if p_item_object:
             if current_user.can_purchase(p_item_object):
                 p_item_object.buy(current_user)
-                flash(f"Congratulations! you purchased {p_item_object.name} for {p_item_object.price}$", category='success')
+                flash(f"Congratulations! you purchased {p_item_object.name}'s share for {p_item_object.price}$", category='success')
 
             else:
-                flash(f"Unfortunately, you dont't enough money to purchase {p_item_object.name} for {p_item_object.price}$", category='danger')
+                flash(f"Unfortunately, you dont't enough money to purchase {p_item_object.name}'s share for {p_item_object.price}$", category='danger')
         
         #sold item login
         sold_item = request.form.get('sold_item')
@@ -41,10 +61,10 @@ def market_page():
             if current_user.can_sell(s_item_object):
                 s_item_object.price = changed_price
                 s_item_object.sell(current_user)
-                flash(f"Congratulations! You Sold {s_item_object.name} back to market!", category='success')
+                flash(f"Congratulations! You Sold {s_item_object.name}'s share back to market!", category='success')
 
             else:
-                flash(f"Something went wrong while selling {s_item_object.name}", category='danger')
+                flash(f"Something went wrong while selling {s_item_object.name}'s share", category='danger')
 
         return redirect(url_for("market_page"))
     
@@ -73,7 +93,7 @@ def register_page():
 
     if form.errors != {}: # If there is errors from the validations
         for err_msg in form.errors.values():
-            flash(f"There was an unexpected foolish error{err_msg}", category='danger')
+            flash(f"There was an unexpected {err_msg}", category='danger')
 
     return render_template("register.html", form=form, comp_logo=pic1, title_logo=titlepic)
 

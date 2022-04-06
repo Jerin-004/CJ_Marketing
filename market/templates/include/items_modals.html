@@ -70,11 +70,11 @@
             {{ purchase_form.hidden_tag() }}
 
             <h4 class="text-center">
-                Are you sure you want to buy {{ item.name }} for ${{ item.price }} ?
+                Are you sure you want to buy {{ item.name }}'s share for ${{ item.price }} ?
             </h4>
             <br>
             <h6 class="text-center">
-                By Clicking Purchase, you will purchase this item.
+                By Clicking Purchase, you will purchase this share.
             </h6>
             <input type="hidden" id="purchase_item" name="purchase_item" value="{{ item.name }}">
             {{ purchase_form.submit(class="btn btn-outline-success btn-block") }}
