@@ -13,22 +13,7 @@ from flask_admin.contrib.sqla import ModelView
 pic1 = os.path.join(app.config['UPLOAD_FOLDER'], 'CJ_Logo_2.png')
 titlepic = os.path.join(app.config['UPLOAD_FOLDER'], 'shopping-cart.png')
 
-class Controller(ModelView):
-    def is_accessible(self):
-        if current_user.username == "Jerin":
-            return current_user.is_authenticated
-        
-        else:
-            return flash("You are not authorized to use the admin dashboard",category="danger")
-            return redirect(url_for("market_page"))
-            
 
-    def not_auth(self):
-        flash("You are not authorized to use the admin dashboard",category="danger")
-        return redirect(url_for("market_page"))
-
-admin.add_view(Controller(User, db.session))
-admin.add_view(Controller(Item, db.session))
 
 @app.route("/") # are called as decorator
 @app.route("/home")
@@ -122,3 +107,21 @@ def logout_page():
     logout_user()
     flash("Logged out successfully!", category="info")
     return redirect(url_for('home_page'))
+
+
+class Controller(ModelView):
+    def is_accessible(self):
+        if current_user.username == "Jerin":
+            return current_user.is_authenticated
+        
+        else:
+            return flash("You are not authorized to use the admin dashboard",category="danger")
+            return redirect(url_for("market_page"))
+            
+
+    def not_auth(self):
+        flash("You are not authorized to use the admin dashboard",category="danger")
+        return redirect(url_for("market_page"))
+
+admin.add_view(Controller(User, db.session))
+admin.add_view(Controller(Item, db.session))
