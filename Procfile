@@ -1,1 +1,0 @@
-app:gunicorn app:app
