@@ -1,20 +1,18 @@
 {
-   "name": "cj_marketing",
-   "version": "1.0.0",
-   "description": "",
-   "scripts": {
-       "build": "echo \"No build specified\" && exit 1",
-       "test": "echo \"No test specified\" && exit 1",
-       "start": "node main.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Jerin-004/CJ_Marketing.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/Jerin-004/CJ_Marketing/issues"
-    },
-    "homepage": "https://github.com/Jerin-004/CJ_Marketing#readme"
+  "name": "cj_marketing",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node market/static/js/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jerin-004/CJ_Marketing.git"
+  },
+  "author": "Jerin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jerin-004/CJ_Marketing/issues"
+  },
+  "homepage": "https://github.com/Jerin-004/CJ_Marketing#readme"
 }
