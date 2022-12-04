@@ -10,6 +10,7 @@ from market import admin
 from flask_admin.contrib.sqla import ModelView
 
 
+
 pic1 = os.path.join(app.config['UPLOAD_FOLDER'], 'CJ_Logo_2.png')
 titlepic = os.path.join(app.config['UPLOAD_FOLDER'], 'shopping-cart.png')
 
@@ -107,6 +108,7 @@ def logout_page():
     logout_user()
     flash("Logged out successfully!", category="info")
     return redirect(url_for('home_page'))
+
 
 
 class Controller(ModelView):
